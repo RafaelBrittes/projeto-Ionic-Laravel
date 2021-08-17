@@ -23,8 +23,7 @@ class UserModel extends Model implements AuthenticatableContract, AuthorizableCo
         'adress',
         'city',
         'state',
-        'phone',
-        'password'
+        'phone'
     ];
 
     public $timestamps = false;
