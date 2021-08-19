@@ -9,20 +9,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class UserModel extends Model implements AuthenticatableContract, AuthorizableContract
+class OrderModel extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
-    protected $table = 'users';
+    protected $table = 'orders';
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'CNPJ',
-        'adress',
-        'city',
-        'state',
-        'phone'
+        'id',
+        'item',
+        'value',
+        'created_at'
     ];
 
     public $timestamps = false;

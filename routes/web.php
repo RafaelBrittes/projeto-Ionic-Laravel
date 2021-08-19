@@ -12,7 +12,7 @@ $router->group(['prefix' => "/users"], function () use ($router){
 });
 
 $router->group(['prefix' => "/order"], function ()use ($router){
-    $router->get('/{id}', 'MainController@showOrders');
-    $router->post('/{id}', 'MainController@createOrder');
+    $router->get('/{id}',    'MainController@showOrders');
+    $router->post('/{id}',   'MainController@createOrder');
     $router->delete('/{id}', 'MainController@deleteOrder');
 });
