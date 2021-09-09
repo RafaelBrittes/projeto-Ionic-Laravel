@@ -17,10 +17,9 @@ class OrderModel extends Model implements AuthenticatableContract, AuthorizableC
     protected $fillable = [
         'id',
         'item',
-        'value',
-        'created_at'
-    ];
+        'value'
+        ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
 }

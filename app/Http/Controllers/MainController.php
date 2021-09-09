@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -13,7 +13,8 @@ class MainController extends Controller
      *
      * @return void
      */
-    public function createUser(Request $request){
+    public function userCreate(Request $request)
+    {
         $user = new UserModel();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -24,7 +25,6 @@ class MainController extends Controller
         $user->state = $request->state;
         $user->phone = $request->phone;
         $user->save();
-
         return Response([
             'Status'     => 'Successo',
             'Resultado'  => 'OK',
