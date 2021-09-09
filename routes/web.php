@@ -8,7 +8,6 @@
 $router->group(['prefix' => "users"], function () use ($router){
     $router->get('/',       'MainController@showUsers');
     $router->post('/',      'MainController@userCreate'); 
-
     $router->put("{id}",    'MainController@userUpdate');
     $router->get("{id}",    'MainController@showSpecificUser');
     $router->delete("{id}", 'MainController@userDelete');
