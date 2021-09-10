@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ClientesPage } from './clientes.page';
 
 import { ClientesPageRoutingModule } from './clientes-routing.module';
-import { ClientModalComponent } from '../client-modal/client-modal.component';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { ClientModalComponent } from '../client-modal/client-modal.component';
     IonicModule,
     ClientesPageRoutingModule
   ],
-  declarations: [ClientesPage, ClientModalComponent],
-  entryComponents:[ClientModalComponent]
+  declarations: [ClientesPage]
 })
 export class ClientesPageModule {}

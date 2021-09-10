@@ -1,21 +1,54 @@
 <ion-content [fullscreen]="true">
 
   
-  <section>
+    <ion-button expand="block" style="height: 50px; margin:50px 50px;">Novo Cliente</ion-button>
 
-    <ion-button expand="block" color="#fd7e14" style="height: 50px; margin:10% 2% 10% 2%; background-color:#ff7300; border-radius:10px;">Novo Cliente</ion-button>
-    
-  </section>
 <!-- fazer ngfor -->
-  <section class="grid grid-template-rows-4">
-      <div class="bold">Nome: </div>
-      <div class="bold">CNPJ: </div>
-      <div class="bold">Total faturado: </div>
-      <div> </div>
-      <div style="justify-self: flex-end; margin-right: 15%;"><ion-icon (click)="showModal()" name="ellipsis-vertical-outline"></ion-icon></div>
-      <div></div>
-  </section>
-<ion-item-divider style="margin-top: -5px;"></ion-item-divider>
+<div *ngFor="let cliente of clientes">
+<ion-item lines="none">
+  <ion-label >
+    <p>Nome: {{cliente.nome}}</p> 
+  </ion-label>
+</ion-item>
+
+<ion-item style="margin:0px; padding:0px" lines="none">
+  <ion-label style="margin:0px; padding:0px">
+    <ion-col><p>CNPJ {{cliente.CNPJ}}</p> </ion-col>
+  </ion-label>
+  <ion-icon (click)="showModal()" name="ellipsis-vertical-outline"   slot="end"></ion-icon>
+</ion-item>
+
+<ion-item style="margin:0px">
+  <ion-label>
+    <p>Total faturado: {{cliente.totalFaturado}}</p>
+  </ion-label>
+</ion-item>
+</div>
+
+
+
+<ion-item *ngFor="let cliente of clientes">
+  <ion-label >
+    <ion-text>
+      <h5 style="float:left;">Nome: </h5> <h5>  {{cliente.nome}}</h5> 
+    </ion-text>
+    <ion-text>
+      <h5 style="float:left;">CNPJ: </h5> <h5 style="float:left;">  {{cliente.CNPJ}}
+      <ion-icon style="margin-left: 1px;" (click)="showModal()" name="ellipsis-vertical-outline"></ion-icon> </h5>
+    </ion-text>
+
+    <ion-text>
+      <br>
+      <h5 style="clear: both; float:left;">Total faturado: </h5> <h5> {{cliente.totalFaturado}}</h5>
+    </ion-text>
+
+  </ion-label>
+  
+</ion-item>
+
+
+
+
   
 
 </ion-content>

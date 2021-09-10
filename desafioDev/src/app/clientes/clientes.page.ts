@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { ClientModalComponent } from '../client-modal/client-modal.component';
 
 @Component({
   selector: 'app-clientes',
@@ -9,16 +7,25 @@ import { ClientModalComponent } from '../client-modal/client-modal.component';
 })
 export class ClientesPage {
 
-  constructor(
-    private modalCtrl: ModalController
-  ) {}
+  clientes = [
+    {
+      "nome": "Pablo",
+      "CNPJ": 152223230,
+      "totalFaturado": 1221
+    },
+    {
+      "nome": "sdfsd",
+      "CNPJ": 152323230,
+      "totalFaturado": 12232
+    },
+    {
+      "nome": "sdfsdf",
+      "CNPJ": 123232350,
+      "totalFaturado": 122
+    }
+  ]
 
-  async showModal(){
-    const modal = await this.modalCtrl.create({
-      component: ClientModalComponent
-      
-    });
-    modal.present();
-  }  
+  constructor(  ) {}
+ 
 
 }
