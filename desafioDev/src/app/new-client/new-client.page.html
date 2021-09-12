@@ -1,6 +1,6 @@
 <ion-toolbar style="padding: 15px;">
   <ion-title class="ion-text-center">Novo Ciente
-    <ion-icon style="float: right; " name="close-outline"></ion-icon>
+    <ion-icon [routerLink]="['/clientes']" style="float: right;" name="close-outline"></ion-icon>
   </ion-title>
   
 </ion-toolbar>
@@ -34,6 +34,6 @@
   </ion-item>
 </div>
 
-<ion-button href="/new-client" expand="block" style="height: 50px; margin:50px 30px;">Cadastrar cliente</ion-button>
+<ion-button expand="block" style="height: 50px; margin:50px 30px;">Cadastrar cliente</ion-button>
 
 </ion-content>
