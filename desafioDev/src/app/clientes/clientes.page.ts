@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
+import { Button } from 'protractor';
 
 @Component({
   selector: 'app-clientes',
@@ -27,7 +28,7 @@ export class ClientesPage {
     }
   ]
 
-  constructor(public actionSheetCtrl: ActionSheetController, private router: Router) { }
+  constructor(public actionSheetCtrl: ActionSheetController, private router: Router, public alertController: AlertController) { }
   async activateActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
@@ -39,7 +40,7 @@ export class ClientesPage {
         text: 'Excluir Cliente',
         role: 'destructive',
         handler: () => {
-          console.log('deleete');
+          this.presentAlertMultipleButtons();
         }
       }, {
         text: 'Novo Pedido',
@@ -55,6 +56,28 @@ export class ClientesPage {
     });
     actionSheet.present();
   }
+
+  async presentAlertMultipleButtons() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert-css-class',
+      header: 'Excluir cliente',
+      subHeader: 'Tem certeza que deseja excluir o cliente?',
+      buttons: [{
+        text: 'Excluir',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }},{
+        text: 'Cancelar',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }}]
+    });
+
+    await alert.present();
+  }
+
 
 
 }

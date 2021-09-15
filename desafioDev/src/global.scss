@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,31 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.alert-css-class .alert-head, .alert-2-msg {
+    display: grid;
+    justify-items: center;
+    .alert-sub-title{
+        font-size: 13px;
+    }
+}
+
+.alert-css-class .alert-button-inner{
+    justify-content: center;
+}
+
+.alert-css-class .alert-wrapper {
+    justify-content: center;
+    max-width: 300px;
+    .alert-button-group {
+        display: grid;
+        justify-content: space-around;
+        button:first-child{
+            margin: 0px;
+            color: white;
+            background-color: #ff7300;
+            padding: 8px 105px;
+            border-radius: 7px;
+        }
+    }
+}
