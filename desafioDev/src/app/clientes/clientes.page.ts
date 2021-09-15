@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
@@ -26,13 +27,13 @@ export class ClientesPage {
     }
   ]
 
-  constructor(public actionSheetCtrl: ActionSheetController) { }
+  constructor(public actionSheetCtrl: ActionSheetController, private router: Router) { }
   async activateActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
         text: 'Atualizar Cliente',
         handler: () => {
-          console.log('atualizaaa');
+          this.router.navigate(['/update'])
         }
       }, {
         text: 'Excluir Cliente',
@@ -43,7 +44,7 @@ export class ClientesPage {
       }, {
         text: 'Novo Pedido',
         handler: () => {
-          console.log('novo pedido');
+          this.router.navigate(['/new-order'])
         }
       }],
       cssClass: 'custom-action',

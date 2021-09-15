@@ -18,6 +18,14 @@ const routes: Routes = [
     path: 'new-client',
     loadChildren: () => import('./new-client/new-client.module').then( m => m.NewClientPageModule)
   },
+  {
+    path: 'new-order',
+    loadChildren: () => import('./new-order/new-order.module').then( m => m.NewOrderPageModule)
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./new-client/new-client.module').then( m => m.NewClientPageModule)
+  }
 ];
 
 @NgModule({
