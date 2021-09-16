@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, AlertController } from '@ionic/angular';
+import { ActionSheetController, AlertController, LoadingController } from '@ionic/angular';
 import { Button } from 'protractor';
-
+import { ClientesService } from '../services/clientes.service';
 @Component({
   selector: 'app-clientes',
   templateUrl: 'clientes.page.html',
@@ -28,7 +28,11 @@ export class ClientesPage {
     }
   ]
 
-  constructor(public actionSheetCtrl: ActionSheetController, private router: Router, public alertController: AlertController) { }
+  constructor(private clientesService: ClientesService,
+    public actionSheetCtrl: ActionSheetController,
+    private router: Router,
+    public alertController: AlertController,
+    public loadingCtrl: LoadingController) {}
   async activateActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
@@ -67,12 +71,14 @@ export class ClientesPage {
         cssClass: 'secondary',
         handler: () => {
           console.log('Confirm Cancel');
-        }},{
+        }
+      }, {
         text: 'Cancelar',
         cssClass: 'secondary',
         handler: () => {
           console.log('Confirm Cancel');
-        }}]
+        }
+      }]
     });
 
     await alert.present();
