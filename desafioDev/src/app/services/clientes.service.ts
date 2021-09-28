@@ -12,7 +12,22 @@ export class ClientesService {
 
     constructor(private http: HttpClient) {}
 
-    getClients(): Observable<Clientes[]>{
-        return this.http.get<Clientes[]>(`${this.mainUrl}/prod`);
+    // getClients(): Promise<any>{
+    //     return new Promise((resolve, reject) => {
+    //         this.http.get(`${this.mainUrl}/users`).subscribe(res =>{
+    //             console.log(res);
+    //             resolve(res)
+    //         });    
+    //     })
+    // }
+
+    getClients(): Observable<any>{
+        return this.http.get(`${this.mainUrl}/users`);
     }
+
+    newClient(data): Observable<any>{
+        return this.http.post(`${this.mainUrl}/users`, data)
+
+    }
+
 }

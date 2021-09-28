@@ -1,38 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController, AlertController, LoadingController } from '@ionic/angular';
 import { Button } from 'protractor';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 import { ClientesService } from '../services/clientes.service';
+import { Clientes } from './clientes.models';
 @Component({
   selector: 'app-clientes',
   templateUrl: 'clientes.page.html',
   styleUrls: ['clientes.page.scss'],
 })
-export class ClientesPage {
+export class ClientesPage implements OnInit {
+  clientes$: Observable<Clientes[]>;
 
-  clientes = [
-    {
-      "nome": "Pablo",
-      "CNPJ": 152223230,
-      "totalFaturado": 1221
-    },
-    {
-      "nome": "sdfsd",
-      "CNPJ": 152323230,
-      "totalFaturado": 12232
-    },
-    {
-      "nome": "sdfsdf",
-      "CNPJ": 123232350,
-      "totalFaturado": 122
-    }
-  ]
 
   constructor(private clientesService: ClientesService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router,
-    public alertController: AlertController,
-    public loadingCtrl: LoadingController) {}
+    public alertController: AlertController) { }
+
+    // ngOnInit() {
+    //   this.clientesService.getClients().then(res =>{
+    //     console.log(res + "asd")
+    //     this.clientes$ = res;
+    //   })
+    // }
+
+    ngOnInit() {
+      this.clientesService.getClients().subscribe(res =>{
+        this.clientes$ = res;
+      })
+    }
+
   async activateActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
@@ -87,3 +87,4 @@ export class ClientesPage {
 
 
 }
+
