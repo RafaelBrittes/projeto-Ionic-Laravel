@@ -8,7 +8,7 @@ import { NewOrderPageRoutingModule } from './new-order-routing.module';
 
 import { NewOrderPage } from './new-order.page';
 import { BrMaskerModule } from 'br-mask';
-
+import{ ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { BrMaskerModule } from 'br-mask';
     FormsModule,
     IonicModule,
     NewOrderPageRoutingModule,
-    BrMaskerModule
+    BrMaskerModule,
+    ReactiveFormsModule
     ],
   declarations: [NewOrderPage]
 })

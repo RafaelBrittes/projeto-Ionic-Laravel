@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-new-client',
@@ -8,10 +10,21 @@ import { Router } from '@angular/router';
 })
 export class NewClientPage implements OnInit {
  
-  constructor( private router: Router) { }
+clientsForm: FormGroup
+
+
+  constructor( private router: Router, private formBuilder: FormBuilder) { 
+    this.clientsForm = this.formBuilder.group({
+      name: this.formBuilder.control(''),
+    })
+  }
   public url: string = "";
 
-
+  
+  public onSubmit() {
+    console.log(this.clientsForm.value);
+  }
+  
   ngOnInit() {
     
     this.url = this.router.url;

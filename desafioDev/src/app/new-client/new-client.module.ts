@@ -7,13 +7,16 @@ import { NewClientPageRoutingModule } from './new-client-routing.module';
 
 import { NewClientPage } from './new-client.page';
 import { BrMaskerModule } from 'br-mask';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     NewClientPageRoutingModule,
-    BrMaskerModule
+    BrMaskerModule,
+    ReactiveFormsModule
   ],
   declarations: [NewClientPage]
 })
