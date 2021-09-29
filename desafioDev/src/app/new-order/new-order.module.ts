@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { NewOrderPageRoutingModule } from './new-order-routing.module';
 
 import { NewOrderPage } from './new-order.page';
+import { BrMaskerModule } from 'br-mask';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewOrderPageRoutingModule
-  ],
+    NewOrderPageRoutingModule,
+    BrMaskerModule
+    ],
   declarations: [NewOrderPage]
 })
 export class NewOrderPageModule {}

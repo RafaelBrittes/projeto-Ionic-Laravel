@@ -34,20 +34,13 @@ class MainController extends Controller
 
     public function showUsers(){
         $users = UserModel::all();
-        return Response([
-            'Status'     => 'Sucesso',
-            'Resultado'  => 'OK',
-            'Informacao' => $users
-        ]);
+        return $users;
+        
     }
 
     public function showSpecificUser($id){
         $users = UserModel::find($id);
-        return Response([
-            'Status'     => 'Sucesso',
-            'Resultado'  => 'OK',
-            'Informacao' => $users
-        ]);
+        return $users;
     }
 
     public function userUpdate(Request $request, $id){
