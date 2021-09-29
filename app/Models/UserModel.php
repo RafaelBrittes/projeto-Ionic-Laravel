@@ -12,10 +12,8 @@ class UserModel extends Model
     protected $table = 'users';
     protected $fillable = [
         'name',
-        'email',
-        'password',
-        'CNPJ',
-        'adress',
+        'cnpj',
+        'address',
         'city',
         'state',
         'phone'

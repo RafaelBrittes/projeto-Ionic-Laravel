@@ -17,10 +17,8 @@ class MainController extends Controller
     {
         $user = new UserModel();
         $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->CNPJ = $request->CNPJ;
-        $user->adress = $request->adress;
+        $user->CNPJ = $request->cnpj;
+        $user->adress = $request->address;
         $user->city = $request->city;
         $user->state = $request->state;
         $user->phone = $request->phone;
