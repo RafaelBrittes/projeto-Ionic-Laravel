@@ -16,6 +16,11 @@ clientsForm: FormGroup
   constructor( private router: Router, private formBuilder: FormBuilder) { 
     this.clientsForm = this.formBuilder.group({
       name: this.formBuilder.control(''),
+      cnpj: this.formBuilder.control(''),
+      address: this.formBuilder.control(''),
+      city: this.formBuilder.control(''),
+      state: this.formBuilder.control(''),
+      phone: this.formBuilder.control(''),
     })
   }
   public url: string = "";
