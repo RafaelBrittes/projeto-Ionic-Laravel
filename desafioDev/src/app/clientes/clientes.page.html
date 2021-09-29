@@ -1,31 +1,7 @@
 <ion-content [fullscreen]="true">
 
   
-    <ion-button [routerLink]="['/new-client']" expand="block" style="height: 50px; margin:50px 30px;">Novo Cliente</ion-button>
-
-<!-- fazer ngfor -->
-<!-- <div *ngFor="let cliente of clientes">
-<ion-item lines="none">
-  <ion-label >
-    <p>Nome: {{cliente.nome}}</p> 
-  </ion-label>
-</ion-item>
-
-<ion-item style="margin:0px; padding:0px" lines="none">
-  <ion-label style="margin:0px; padding:0px">
-    <ion-col><p>CNPJ {{cliente.CNPJ}}</p> </ion-col>
-  </ion-label>
-  <ion-icon (click)="showModal()" name="ellipsis-vertical-outline"   slot="end"></ion-icon>
-</ion-item>
-
-<ion-item style="margin:0px">
-  <ion-label>
-    <p>Total faturado: {{cliente.totalFaturado}}</p>
-  </ion-label>
-</ion-item>
-</div> -->
-
-
+<ion-button [routerLink]="['/new-client']" expand="block" style="height: 50px; margin:50px 30px;">Novo Cliente</ion-button>
 
 <ion-item style="margin-left: 15px;" *ngFor="let cliente of clientes$">
   <ion-label >
