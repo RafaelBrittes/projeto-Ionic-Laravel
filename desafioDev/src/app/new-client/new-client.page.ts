@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class NewClientPage implements OnInit {
  
-  constructor( private router: Router ) { }
+  constructor( private router: Router) { }
   public url: string = "";
+
+
   ngOnInit() {
     
     this.url = this.router.url;
-
   }
 }

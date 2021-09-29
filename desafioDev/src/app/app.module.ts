@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrMaskerModule } from 'br-mask';
 
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
