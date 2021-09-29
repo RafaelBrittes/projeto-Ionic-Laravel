@@ -16,7 +16,7 @@
   </ion-item>
   <ion-item>
     <ion-label>CNPJ: </ion-label>
-    <ion-input mask="000.000.000-00"></ion-input>
+    <ion-input [brmasker]="{person: true}"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Endereço: </ion-label>
@@ -32,8 +32,9 @@
   </ion-item>
   <ion-item>
     <ion-label>Telefone: </ion-label>
-    <ion-input></ion-input>
+    <ion-input [brmasker]="{phone: true}"></ion-input>
   </ion-item>
+  
 </div>
 
 <ion-button *ngIf="this.url == '/update'" expand="block" style="height: 50px; margin:50px 30px;">Atualizar cliente</ion-button>

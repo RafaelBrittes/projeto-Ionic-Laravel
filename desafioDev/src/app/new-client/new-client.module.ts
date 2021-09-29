@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NewClientPageRoutingModule } from './new-client-routing.module';
 
 import { NewClientPage } from './new-client.page';
+import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewClientPageRoutingModule
+    NewClientPageRoutingModule,
+    BrMaskerModule
   ],
   declarations: [NewClientPage]
 })

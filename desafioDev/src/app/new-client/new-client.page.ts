@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-client.page.scss'],
 })
 export class NewClientPage implements OnInit {
-
+ 
   constructor( private router: Router ) { }
   public url: string = "";
   ngOnInit() {
