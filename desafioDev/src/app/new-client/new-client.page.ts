@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,12 +15,12 @@ clientsForm: FormGroup
 
   constructor( private router: Router, private formBuilder: FormBuilder) { 
     this.clientsForm = this.formBuilder.group({
-      name: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      address: this.formBuilder.control(''),
-      city: this.formBuilder.control(''),
-      state: this.formBuilder.control(''),
-      phone: this.formBuilder.control(''),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
+      cnpj: this.formBuilder.control('', [Validators.required, Validators.minLength(18)]),
+      address: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
+      city: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
+      state: this.formBuilder.control('', [Validators.required, Validators.minLength(2)]),
+      phone: this.formBuilder.control('', [Validators.required, Validators.minLength(14)]),
     })
   }
   public url: string = "";
@@ -33,5 +33,9 @@ clientsForm: FormGroup
   ngOnInit() {
     
     this.url = this.router.url;
+  }
+
+  public control(input: string){
+    return this.clientsForm.get(input);
   }
 }
