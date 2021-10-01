@@ -15,37 +15,37 @@
       <ion-item >
         <ion-label>Nome: </ion-label>
         <ion-input formControlName="name"></ion-input>
-        <div *ngIf="control('name')?.errors?.required">Insira um nome</div>
-        <div *ngIf="control('name')?.errors?.minlength">Minimo 4 letras</div>
+        <div class="miniError" *ngIf="control('name')?.errors?.required">Insira um nome</div>
+        <div class="miniError" *ngIf="control('name')?.errors?.minlength">Minimo 4 letras</div>
       </ion-item>
       <ion-item>
         <ion-label>CNPJ: </ion-label>
         <ion-input formControlName="cnpj" [brmasker]="{person: true}"></ion-input>
-        <div *ngIf="control('cnpj')?.errors?.required">Insira um CNPJ</div>
-        <div *ngIf="control('cnpj')?.errors?.minlength">Minimo 14 digitos</div>
+        <div class="miniError" *ngIf="control('cnpj')?.errors?.required">Insira um CNPJ</div>
+        <div class="miniError" *ngIf="control('cnpj')?.errors?.minlength">Minimo 14 digitos</div>
       </ion-item>
       <ion-item>
         <ion-label>Endereço: </ion-label>
         <ion-input formControlName="address"></ion-input>
-        <div *ngIf="control('address')?.errors?.required">Insira um endereço</div>
+        <div class="miniError" *ngIf="control('address')?.errors?.required">Insira um endereço</div>
       </ion-item>
       <ion-item>
         <ion-label>Cidade: </ion-label>
         <ion-input formControlName="city"></ion-input>
-        <div *ngIf="control('city')?.errors?.required">Insira uma cidade</div>
-        <div *ngIf="control('city')?.errors?.minlength">Cidade inválida</div>
+        <div class="miniError" *ngIf="control('city')?.errors?.required">Insira uma cidade</div>
+        <div class="miniError" *ngIf="control('city')?.errors?.minlength">Cidade inválida</div>
       </ion-item>
       <ion-item>
         <ion-label>Estado: </ion-label>
         <ion-input formControlName="state"></ion-input>
-        <div *ngIf="control('state')?.errors?.required">Insira um estado</div>
-        <div *ngIf="control('state')?.errors?.minlength">Minimo 2 letras</div>
+        <div class="miniError" *ngIf="control('state')?.errors?.required">Insira um estado</div>
+        <div class="miniError" *ngIf="control('state')?.errors?.minlength">Minimo 2 letras</div>
       </ion-item>
       <ion-item>
         <ion-label>Telefone: </ion-label>
         <ion-input formControlName="phone" [brmasker]="{phone: true}"></ion-input>
-        <div *ngIf="control('phone')?.errors?.required">Insira um telefone</div>
-        <div *ngIf="control('phone')?.errors?.minlength">Telefone inválido</div>
+        <div class="miniError" *ngIf="control('phone')?.errors?.required">Insira um telefone</div>
+        <div class="miniError" *ngIf="control('phone')?.errors?.minlength">Telefone inválido</div>
       </ion-item>
 
       <ion-button *ngIf="this.url == '/update'" type="submit" [disabled]="clientsForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Atualizar cliente</ion-button>
