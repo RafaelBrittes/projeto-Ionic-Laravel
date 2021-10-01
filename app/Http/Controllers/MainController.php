@@ -23,17 +23,16 @@ class MainController extends Controller
         $user->state = $request->state;
         $user->phone = $request->phone;
         $user->save();
-        return Response([
-            'Status'     => 'Successo',
-            'Resultado'  => 'OK',
-            'Informacao' => 'Dados adicionados com sucesso!'
-        ]);
+        return $user;
+    }
+
+    public function delete($id){
+        return UserModel::find($id)->delete();
     }
 
     public function showUsers(){
         $users = UserModel::all();
         return $users;
-        
     }
 
     public function showSpecificUser($id){

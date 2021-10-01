@@ -48,7 +48,7 @@
         <div class="miniError" *ngIf="control('phone')?.errors?.minlength">Telefone inválido</div>
       </ion-item>
 
-      <ion-button *ngIf="this.url == '/update'" type="submit" [disabled]="clientsForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Atualizar cliente</ion-button>
+      <ion-button *ngIf="this.url == '/update'" type="submit" (click)="update(cliente.id)" [disabled]="clientsForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Atualizar cliente</ion-button>
       <ion-button *ngIf="this.url == '/new-client'" type="submit" [disabled]="clientsForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Cadastrar cliente</ion-button>
     </form>
   </div>

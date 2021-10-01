@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
 import{ Location } from '@angular/common';
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Clientes } from '../clientes/clientes.models';
+import { ClientesService } from '../services/clientes.service';
 
 @Component({
   selector: 'app-new-client',
@@ -12,11 +13,14 @@ import{ Location } from '@angular/common';
   styleUrls: ['./new-client.page.scss'],
 })
 export class NewClientPage implements OnInit {
- 
+refreshClients$ = new BehaviorSubject<boolean>(true);
+clientes$: Observable<Clientes[]>;
+
 clientsForm: FormGroup
 
 
-  constructor( private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private _location: Location) { 
+  constructor( private router: Router, private formBuilder: FormBuilder, private http: HttpClient, private _location: Location, private clienteService: ClientesService) { 
+
     this.clientsForm = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
       cnpj: this.formBuilder.control('', [Validators.required, Validators.minLength(18)]),
@@ -34,21 +38,14 @@ clientsForm: FormGroup
   //   return this.http.post(`${this.mainUrl}/users`, data)
   // }
   
-  onSubmit() {
-    var formData: any = new FormData();
-    formData.append("name", this.clientsForm.get('name').value);
-    formData.append("cnpj", this.clientsForm.get('cnpj').value);
-    formData.append("address", this.clientsForm.get('address').value);
-    formData.append("city", this.clientsForm.get('city').value);
-    formData.append("state", this.clientsForm.get('state').value);
-    formData.append("phone", this.clientsForm.get('phone').value);
+  onSubmit() {   
+    let newCliente = this.clientsForm.value;
 
-  
-    this.http.post(`${this.mainUrl}/users`, formData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
+    this.http.post(`${this.mainUrl}/users`, newCliente).subscribe((res) => {     
+      this.clienteService.setNewClient(res);
+    })
     this.backToClients();
+
   }
 
   backToClients() {
@@ -63,4 +60,5 @@ clientsForm: FormGroup
   public control(input: string){
     return this.clientsForm.get(input);
   }
+
 }

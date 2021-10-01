@@ -2,43 +2,58 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController, AlertController, LoadingController } from '@ionic/angular';
 import { Button } from 'protractor';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 import { ClientesService } from '../services/clientes.service';
 import { Clientes } from './clientes.models';
+import { BehaviorSubject } from 'rxjs';
+import { NewClientPage } from '../new-client/new-client.page';
+import { ThrowStmt } from '@angular/compiler';
+
 @Component({
   selector: 'app-clientes',
   templateUrl: 'clientes.page.html',
   styleUrls: ['clientes.page.scss'],
 })
 export class ClientesPage implements OnInit {
-  clientes$: Observable<Clientes[]>;
-
+  clientes$: Clientes[];
+  refreshClients$ = new BehaviorSubject<boolean>(true);
+  i: number;
+  currentClientID: number;
 
   constructor(private clientesService: ClientesService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router,
     public alertController: AlertController) { }
 
-    // ngOnInit() {
-    //   this.clientesService.getClients().then(res =>{
-    //     console.log(res + "asd")
-    //     this.clientes$ = res;
-    //   })
-    // }
 
-    ngOnInit() {
-      this.clientesService.getClients().subscribe(res =>{
-        this.clientes$ = res;
-      })
-    }
+  ngOnInit() {
+  }
 
-  async activateActionSheet() {
+  ionViewWillEnter(){
+    this.clientesService.getCliente().then(res => {
+      this.clientes$ = res
+    })
+  }
+
+  // ngOnInit() {
+  //   this.clientesService.getClients().subscribe(res => {
+  //     this.clientes$ = res;
+  //   })
+  // }
+
+  // ngOnInit() {
+  //   this.clientes$ = this.refreshClients$.pipe(switchMap(_ => this.clientesService.getClients()));
+  // }
+
+  async activateActionSheet(id) {
+    this.currentClientID = id;
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
         text: 'Atualizar Cliente',
         handler: () => {
           this.router.navigate(['/update'])
+          // NewClientPage.update()
         }
       }, {
         text: 'Excluir Cliente',
@@ -70,7 +85,9 @@ export class ClientesPage implements OnInit {
         text: 'Excluir',
         cssClass: 'secondary',
         handler: () => {
-          console.log('Confirm Cancel');
+          this.clientesService.deleteClient(this.currentClientID).subscribe(() => {
+            this.clientes$ = this.clientesService.deleteOnArray(this.currentClientID);
+          });
         }
       }, {
         text: 'Cancelar',

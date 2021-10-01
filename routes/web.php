@@ -10,7 +10,7 @@ $router->group(['prefix' => "users"], function () use ($router){
     $router->post('/',      'MainController@userCreate'); 
     $router->put("{id}",    'MainController@userUpdate');
     $router->get("{id}",    'MainController@showSpecificUser');
-    $router->delete("{id}", 'MainController@userDelete');
+    $router->delete("{id}", 'MainController@delete');
 });
 
 $router->group(['prefix' => "order"], function () use ($router){
