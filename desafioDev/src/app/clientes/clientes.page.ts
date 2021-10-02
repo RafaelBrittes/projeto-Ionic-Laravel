@@ -21,7 +21,7 @@ export class ClientesPage implements OnInit {
   i: number;
   currentClientID: number;
 
-  constructor(private clientesService: ClientesService,
+  constructor(private clienteService: ClientesService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router,
     public alertController: AlertController) { }
@@ -30,21 +30,11 @@ export class ClientesPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter(){
-    this.clientesService.getCliente().then(res => {
+  ionViewWillEnter(){ // sempre que puxar a page irá rodar
+    this.clienteService.getCliente().then(res => {
       this.clientes$ = res
     })
   }
-
-  // ngOnInit() {
-  //   this.clientesService.getClients().subscribe(res => {
-  //     this.clientes$ = res;
-  //   })
-  // }
-
-  // ngOnInit() {
-  //   this.clientes$ = this.refreshClients$.pipe(switchMap(_ => this.clientesService.getClients()));
-  // }
 
   async activateActionSheet(id) {
     this.currentClientID = id;
@@ -53,7 +43,7 @@ export class ClientesPage implements OnInit {
         text: 'Atualizar Cliente',
         handler: () => {
           this.router.navigate(['/update'])
-          // NewClientPage.update()
+          this.clienteService.clientID = this.currentClientID
         }
       }, {
         text: 'Excluir Cliente',
@@ -85,8 +75,8 @@ export class ClientesPage implements OnInit {
         text: 'Excluir',
         cssClass: 'secondary',
         handler: () => {
-          this.clientesService.deleteClient(this.currentClientID).subscribe(() => {
-            this.clientes$ = this.clientesService.deleteOnArray(this.currentClientID);
+          this.clienteService.deleteClient(this.currentClientID).subscribe(() => {
+            this.clientes$ = this.clienteService.deleteOnArray(this.currentClientID);
           });
         }
       }, {

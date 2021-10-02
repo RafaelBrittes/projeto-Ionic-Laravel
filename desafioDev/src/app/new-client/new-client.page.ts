@@ -55,10 +55,16 @@ clientsForm: FormGroup
   ngOnInit() {
     
     this.url = this.router.url;
+    
+  this.update()    
   }
 
   public control(input: string){
     return this.clientsForm.get(input);
+  }
+
+  update(){
+    console.log(this.clienteService.clientID)
   }
 
 }
