@@ -17,8 +17,8 @@ class MainController extends Controller
     {
         $user = new UserModel();
         $user->name = $request->name;
-        $user->CNPJ = $request->cnpj;
-        $user->adress = $request->address;
+        $user->cnpj = $request->cnpj;
+        $user->address = $request->address;
         $user->city = $request->city;
         $user->state = $request->state;
         $user->phone = $request->phone;
@@ -44,8 +44,8 @@ class MainController extends Controller
         $users = UserModel::find($id);
         $users->name = $request->name;
         $users->email = $request->email;
-        $users->CNPJ = $request->CNPJ;
-        $users->adress = $request->adress;
+        $users->cnpj = $request->cnpj;
+        $users->address = $request->address;
         $users->city = $request->city;
         $users->state = $request->state;
         $users->phone = $request->phone;

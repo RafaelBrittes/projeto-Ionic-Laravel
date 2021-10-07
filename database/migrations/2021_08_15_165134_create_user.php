@@ -16,8 +16,8 @@ class CreateUser extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string("name", 50);
-            $table->string("CNPJ", 20);
-            $table->string('adress');
+            $table->string("cnpj", 20);
+            $table->string('address');
             $table->string('city');
             $table->string('state');
             $table->string('phone');
