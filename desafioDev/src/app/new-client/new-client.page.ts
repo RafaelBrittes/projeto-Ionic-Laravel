@@ -35,14 +35,24 @@ export class NewClientPage implements OnInit {
   public url: string = "";
   mainUrl = 'http://projeto-ionic.beta';
 
-  onSubmit() {
-    let newCliente = this.clientsForm.value;
+  onSubmit(buttonType) {
+    if (buttonType === null) {
+      let updateClient = this.clientsForm.value;
 
-    this.http.post(`${this.mainUrl}/users`, newCliente).subscribe((res) => {
-      this.clienteService.setNewClient(res);
-    })
-    this.backToClients();
+      this.http.post(`${this.mainUrl}/users/${this.clientID}`, updateClient).subscribe((res) => {
+        this.clienteService.setNewClient(res);
+      })
+      this.backToClients();
+    }
 
+    if (buttonType !== null) {
+      let newCliente = this.clientsForm.value;
+
+      this.http.post(`${this.mainUrl}/users`, newCliente).subscribe((res) => {
+        this.clienteService.setNewClient(res);
+      })
+      this.backToClients();
+    }
   }
 
   backToClients() {
@@ -62,25 +72,14 @@ export class NewClientPage implements OnInit {
 
   update() {
     if (this.router.url == "/update") {
-
-      function asd(this.clientela: any, clientID: any){
-        for (let i = 0; i < this.clientela.length; i++) {
-          if (this.clientela[i].id == this.clientID) {
-            let asds = this.clientela[i]
-            return asds
-          }
-        }}
-      console.log(asd(this.clientela, this.clientID));
-      
-      console.log(this.clientela.length)
+      let filtrado = this.clientela.find(id => id.id === this.clientID)
       this.clientsForm.patchValue({
-
-        name: "asd",
-        cnpj: this.formBuilder.control('', [Validators.required, Validators.minLength(18)]),
-        address: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
-        city: this.formBuilder.control('', [Validators.required, Validators.minLength(3)]),
-        state: this.formBuilder.control('', [Validators.required, Validators.minLength(2)]),
-        phone: this.formBuilder.control('', [Validators.required, Validators.minLength(14)]),
+        name: filtrado.name,
+        cnpj: filtrado.cnpj,
+        address: filtrado.address,
+        city: filtrado.city,
+        state: filtrado.state,
+        phone: filtrado.phone,
       })
       // console.log(this.clienteService.clientela)
       // console.log(this.clientID)
