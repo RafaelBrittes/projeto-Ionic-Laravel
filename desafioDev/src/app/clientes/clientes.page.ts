@@ -44,6 +44,7 @@ export class ClientesPage implements OnInit {
         handler: () => {
           this.router.navigate(['/update'])
           this.clienteService.clientID = this.currentClientID
+          console.log(this.currentClientID + "currentClientID clientes.page")
         }
       }, {
         text: 'Excluir Cliente',
