@@ -43,20 +43,13 @@ class MainController extends Controller
     public function userUpdate(Request $request, $id){
         $users = UserModel::find($id);
         $users->name = $request->name;
-        $users->email = $request->email;
         $users->cnpj = $request->cnpj;
         $users->address = $request->address;
         $users->city = $request->city;
         $users->state = $request->state;
         $users->phone = $request->phone;
         $users->save();
-
-        return Response([
-            'Status'     => 'Successo',
-            'Resultado'  => 'OK',
-            'Informacao' => 'Dados alterados com sucesso!'
-        ]);
-
+        return $users;
     }
     
 }
