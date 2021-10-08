@@ -16,7 +16,7 @@ export class OrdersService {
     public clientID: number;
 
     
-    getCliente(){
+    getPedidos(){
         return new Promise<Orders[]>((resolve) => {
             if(this.clientela){
                 return resolve(this.clientela)

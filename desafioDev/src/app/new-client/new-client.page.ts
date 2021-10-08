@@ -80,9 +80,6 @@ export class NewClientPage implements OnInit {
         state: filtrado.state,
         phone: filtrado.phone,
       })
-      // console.log(this.clienteService.clientela)
-      // console.log(this.clientID)
     }
   }
-
 }
