@@ -36,16 +36,16 @@ export class NewClientPage implements OnInit {
   mainUrl = 'http://projeto-ionic.beta';
 
   onSubmit(buttonType) {
-    if (buttonType === null) {
+    if (buttonType === 'update') {
       let updateClient = this.clientsForm.value;
 
-      this.http.post(`${this.mainUrl}/users/${this.clientID}`, updateClient).subscribe((res) => {
-        this.clienteService.setNewClient(res);
+      this.http.put(`${this.mainUrl}/users/${this.clientID}`, updateClient).subscribe((res) => {
+        this.clienteService.updateClient(res);
       })
       this.backToClients();
     }
 
-    if (buttonType !== null) {
+    if (buttonType === 'new') {
       let newCliente = this.clientsForm.value;
 
       this.http.post(`${this.mainUrl}/users`, newCliente).subscribe((res) => {

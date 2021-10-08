@@ -20,6 +20,11 @@ export class ClientesService {
         this.clientela.push(client);       
     }
 
+    updateClient(client){
+        var index = this.clientela.findIndex(id => id.id === this.clientID)
+        this.clientela[index] = client
+    }
+
 
     deleteOnArray(currentClientID){
         return this.clientela = this.clientela.filter(c => c.id !== currentClientID)
