@@ -10,15 +10,15 @@ import { Orders } from '../orders/orders.models';
 export class OrdersService {
     mainUrl = 'http://projeto-ionic.beta';
 
-    constructor(private http: HttpClient) {}
-    
+    constructor(private http: HttpClient) { }
+
     public clientela: any;
     public clientID: number;
 
-    
-    getPedidos(){
+
+    getPedidos() {
         return new Promise<Orders[]>((resolve) => {
-            if(this.clientela){
+            if (this.clientela) {
                 return resolve(this.clientela)
             }
 

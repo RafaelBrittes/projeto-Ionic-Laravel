@@ -9,9 +9,9 @@ import { Observable } from 'rxjs/internal/Observable';
 export class NewClientService {
     mainUrl = 'http://projeto-ionic.beta';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    newClient(data): Observable<any>{
+    newClient(data): Observable<any> {
         return this.http.post(`${this.mainUrl}/users`, data)
     }
 }

@@ -25,7 +25,7 @@ export class ClientesPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter(){ // sempre que puxar a page irá rodar
+  ionViewWillEnter() { // sempre que puxar a page irá rodar
     this.clienteService.getCliente().then(res => {
       this.clientes$ = res
     })

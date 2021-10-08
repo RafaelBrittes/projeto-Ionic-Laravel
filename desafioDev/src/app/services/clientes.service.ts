@@ -10,28 +10,28 @@ import { Clientes } from '../clientes/clientes.models';
 export class ClientesService {
     mainUrl = 'http://projeto-ionic.beta';
 
-    constructor(private http: HttpClient) {}
-    
+    constructor(private http: HttpClient) { }
+
     public clientela: any;
     public clientID: number;
 
-    setNewClient(client){
-        this.clientela.push(client);       
+    setNewClient(client) {
+        this.clientela.push(client);
     }
 
-    updateClient(client){
+    updateClient(client) {
         var index = this.clientela.findIndex(id => id.id === this.clientID)
         this.clientela[index] = client
     }
 
 
-    deleteOnArray(currentClientID){
+    deleteOnArray(currentClientID) {
         return this.clientela = this.clientela.filter(c => c.id !== currentClientID)
     }
-    
-    getCliente(){
+
+    getCliente() {
         return new Promise<Clientes[]>((resolve) => {
-            if(this.clientela){
+            if (this.clientela) {
                 return resolve(this.clientela)
             }
 
@@ -46,7 +46,7 @@ export class ClientesService {
     //     return this.http.get(`${this.mainUrl}/users`);
     // }
 
-    deleteClient(i): Observable<any>{
+    deleteClient(i): Observable<any> {
         return this.http.delete(`${this.mainUrl}/users/${i}`)
     }
 }
