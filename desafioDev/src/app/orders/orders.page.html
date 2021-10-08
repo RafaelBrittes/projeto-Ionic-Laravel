@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+
+
+  <ion-title> <ion-icon [routerLink]="['/clientes']" style="float: right; margin-top: 20px;" name="close-outline"></ion-icon>
+    <ion-button [routerLink]="['/new-order']" expand="block" style="height: 50px; margin:50px 30px;">Novo pedido</ion-button>
+
+    
+  </ion-title>
+
+
+  <ion-item style="margin-left: 15px;" *ngFor="let pedido of pedidos$">
+    <ion-label>
+      <ion-text>
+        <h5 style="float:left;">Pedido #</h5>
+        <h5>{{orders.id}}</h5>
+      </ion-text>
+      <ion-text>
+        <h5>Produto: </h5>
+        <h5>{{orders.item}}</h5>
+      </ion-text>
+      <ion-text>
+        <h5>Valor: </h5>
+        <h5>{{orders.value}}</h5>
+      </ion-text>
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

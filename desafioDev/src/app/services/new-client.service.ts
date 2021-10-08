@@ -14,5 +14,4 @@ export class NewClientService {
     newClient(data): Observable<any>{
         return this.http.post(`${this.mainUrl}/users`, data)
     }
-
 }

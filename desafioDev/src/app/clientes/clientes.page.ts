@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, AlertController, LoadingController } from '@ionic/angular';
-import { Button } from 'protractor';
-import { switchMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/Observable';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 import { ClientesService } from '../services/clientes.service';
 import { Clientes } from './clientes.models';
 import { BehaviorSubject } from 'rxjs';
-import { NewClientPage } from '../new-client/new-client.page';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-clientes',

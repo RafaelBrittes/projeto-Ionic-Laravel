@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'update',
     loadChildren: () => import('./new-client/new-client.module').then( m => m.NewClientPageModule)
+  },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
   }
 ];
 

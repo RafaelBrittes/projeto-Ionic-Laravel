@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { asapScheduler, BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Clientes } from '../clientes/clientes.models';
 import { ClientesService } from '../services/clientes.service';
-import { addListener } from 'process';
 
 @Component({
   selector: 'app-new-client',
