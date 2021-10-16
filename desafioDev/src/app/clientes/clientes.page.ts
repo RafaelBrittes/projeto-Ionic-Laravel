@@ -4,6 +4,7 @@ import { ActionSheetController, AlertController } from '@ionic/angular';
 import { ClientesService } from '../services/clientes.service';
 import { Clientes } from './clientes.models';
 import { BehaviorSubject } from 'rxjs';
+import { OrdersService } from '../services/orders.service';
 
 @Component({
   selector: 'app-clientes',
@@ -19,7 +20,8 @@ export class ClientesPage implements OnInit {
   constructor(private clienteService: ClientesService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    private ordersService: OrdersService) { }
 
 
   ngOnInit() {
@@ -49,7 +51,8 @@ export class ClientesPage implements OnInit {
       }, {
         text: 'Novo Pedido',
         handler: () => {
-          this.router.navigate(['/new-order'])
+          this.router.navigate(['/orders'])
+          this.ordersService.clientID = this.currentClientID
         }
       }],
       cssClass: 'custom-action',

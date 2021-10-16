@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { Orders } from '../orders/orders.models';
 
 
@@ -12,21 +12,25 @@ export class OrdersService {
 
     constructor(private http: HttpClient) { }
 
-    public clientela: any;
+    public ordersList: any;
     public clientID: number;
 
 
     getPedidos() {
         return new Promise<Orders[]>((resolve) => {
-            if (this.clientela) {
-                return resolve(this.clientela)
+            if (this.ordersList) {
+                return resolve(this.ordersList)
             }
 
             this.http.get<Orders[]>(`${this.mainUrl}/users`).subscribe(res => {
-                this.clientela = res;
+                this.ordersList = res;
                 return resolve(res)
             })
         })
+    }
+
+    setNewOrder(order) {
+        this.ordersList.push(order);
     }
 
 }

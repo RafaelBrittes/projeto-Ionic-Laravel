@@ -13,12 +13,9 @@ class OrderController extends Controller
         $order = new OrderModel();
         $order->item = $request->item;
         $order->value = $request->value;
+        $order->user_id = $request->user_id;
         $order->save();
-
-        return Response([
-            'Status'     => 'Successo',
-            'Informacao' => 'Pedido criado com sucesso!'
-        ]);
+        return $request;
     }
 
     public function showOrders(){

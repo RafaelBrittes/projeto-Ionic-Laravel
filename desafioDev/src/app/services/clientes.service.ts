@@ -42,10 +42,6 @@ export class ClientesService {
         })
     }
 
-    // getClients(): Observable<any>{
-    //     return this.http.get(`${this.mainUrl}/users`);
-    // }
-
     deleteClient(i): Observable<any> {
         return this.http.delete(`${this.mainUrl}/users/${i}`)
     }

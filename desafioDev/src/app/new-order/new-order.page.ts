@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
+import { ClientesService } from '../services/clientes.service';
+import { OrdersService } from '../services/orders.service';
+
 
 @Component({
   selector: 'app-new-order',
@@ -6,8 +12,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-order.page.scss'],
 })
 export class NewOrderPage implements OnInit {
+  ordersForm: FormGroup
+  public url: string = "";
+  mainUrl = 'http://projeto-ionic.beta';
+  public clientID = this.clienteService.clientID;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private _location: Location, private clienteService: ClientesService, private ordersService: OrdersService) {
+
+    this.ordersForm = this.formBuilder.group({
+      item: this.formBuilder.control('', [Validators.required, Validators.minLength(1)]),
+      value: this.formBuilder.control('', [Validators.required, Validators.minLength(1)]),
+    })
+   }
+
+   public control(input: string) {
+    return this.ordersForm.get(input);
+  }
+
+   onSubmit(){
+    let newOrder = this.ordersForm.value;
+    newOrder.value = parseFloat(newOrder.value).toFixed(2)
+    newOrder.user_id = this.clientID;
+    this.http.post(`${this.mainUrl}/order`, newOrder).subscribe((res) => {
+      this.ordersService.setNewOrder(res)
+    })
+    this.backToOrders();
+  }
+
+  backToOrders() {
+    this._location.back();
+  }
 
   ngOnInit() {
   }

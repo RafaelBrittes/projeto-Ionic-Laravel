@@ -17,6 +17,7 @@ class CreateOrders extends Migration
             $table->id();
             $table->string("item");
             $table->float("value");
+            $table->string("user_id");
             $table->timestamps();
         });
     }
