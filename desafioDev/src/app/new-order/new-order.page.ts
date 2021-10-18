@@ -15,7 +15,7 @@ export class NewOrderPage implements OnInit {
   ordersForm: FormGroup
   public url: string = "";
   mainUrl = 'http://projeto-ionic.beta';
-  public clientID = this.clienteService.clientID;
+  public clientID = this.ordersService.clientID;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private _location: Location, private clienteService: ClientesService, private ordersService: OrdersService) {
 
@@ -31,8 +31,9 @@ export class NewOrderPage implements OnInit {
 
    onSubmit(){
     let newOrder = this.ordersForm.value;
-    newOrder.value = parseFloat(newOrder.value).toFixed(2);
     newOrder.user_id = this.clientID;
+    newOrder.value = parseFloat(newOrder.value).toFixed(2);
+   
     this.http.post(`${this.mainUrl}/order`, newOrder).subscribe((res) => {
       this.ordersService.setNewOrder(res)
     })
