@@ -15,6 +15,7 @@ $router->group(['prefix' => "users"], function () use ($router){
 
 $router->group(['prefix' => "order"], function () use ($router){
     $router->get('/',    'OrderController@showOrders');
+    $router->get('/{id}',    'OrderController@showOrdersByID');
     $router->post('/',   'OrderController@createOrder');    
     $router->delete('/{id}', 'OrderController@deleteOrder');
 });

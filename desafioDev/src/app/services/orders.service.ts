@@ -18,11 +18,8 @@ export class OrdersService {
 
     getPedidos() {
         return new Promise<Orders[]>((resolve) => {
-            if (this.ordersList) {
-                return resolve(this.ordersList)
-            }
-
-            this.http.get<Orders[]>(`${this.mainUrl}/users`).subscribe(res => {
+            
+            this.http.get<Orders[]>(`${this.mainUrl}/order/${this.clientID}`).subscribe(res => {
                 this.ordersList = res;
                 return resolve(res)
             })

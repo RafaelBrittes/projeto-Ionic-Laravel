@@ -31,7 +31,7 @@ export class NewOrderPage implements OnInit {
 
    onSubmit(){
     let newOrder = this.ordersForm.value;
-    newOrder.value = parseFloat(newOrder.value).toFixed(2)
+    newOrder.value = parseFloat(newOrder.value).toFixed(2);
     newOrder.user_id = this.clientID;
     this.http.post(`${this.mainUrl}/order`, newOrder).subscribe((res) => {
       this.ordersService.setNewOrder(res)
@@ -44,6 +44,7 @@ export class NewOrderPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.clientID);
   }
 
 }

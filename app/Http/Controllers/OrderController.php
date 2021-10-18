@@ -26,6 +26,11 @@ class OrderController extends Controller
         ]);
     }
 
+    public function showOrdersByID($id){
+        $orders = OrderModel::where('user_id', $id)->get();
+        return $orders;
+    }
+
     public function deleteOrder($id){
         $order = OrderModel::find($id);
         $order->delete();
