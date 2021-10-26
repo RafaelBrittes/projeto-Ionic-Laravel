@@ -1,6 +1,6 @@
 <ion-toolbar style="padding: 15px;">
   <ion-title class="ion-text-center">Novo Pedido
-    <ion-icon [routerLink]="['/clientes']" style="float: right;" name="close-outline"></ion-icon>
+    <ion-icon [routerLink]="['/orders']" style="float: right;" name="close-outline"></ion-icon>
   </ion-title>
 </ion-toolbar>
 
@@ -18,7 +18,7 @@
         <ion-input formControlName="value" [brmasker]="{money: true, thousand: ',',  decimalCaracter: '.', decimal: '2'}"></ion-input>
         <div class="miniError" *ngIf="control('value')?.errors?.required">Insira um valor</div>
       </ion-item>
-      <ion-button (click)="onSubmit()" type="submit" [disabled]="ordersForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Gerar Pedido</ion-button>
+      <ion-button type="submit" [disabled]="ordersForm.invalid" expand="block" style="height: 50px; margin:50px 30px;">Gerar Pedido</ion-button>
     </form>
   </div>
 

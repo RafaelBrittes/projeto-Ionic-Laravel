@@ -5,6 +5,8 @@ import { ClientesService } from '../services/clientes.service';
 import { Clientes } from './clientes.models';
 import { BehaviorSubject } from 'rxjs';
 import { OrdersService } from '../services/orders.service';
+import { Orders } from '../orders/orders.models';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-clientes',
@@ -16,24 +18,29 @@ export class ClientesPage implements OnInit {
   refreshClients$ = new BehaviorSubject<boolean>(true);
   i: number;
   currentClientID: number;
+  mainUrl = 'http://projeto-ionic.beta';
+  orders$: Orders[];
 
   constructor(private clienteService: ClientesService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router,
     public alertController: AlertController,
-    private ordersService: OrdersService) { }
+    private ordersService: OrdersService,
+    public http: HttpClient) { }
+    public ordersList: any;
 
 
   ngOnInit() {
+    
   }
 
-  ionViewWillEnter() { // sempre que puxar a page irá rodar
+  ionViewWillEnter() {
     this.clienteService.getCliente().then(res => {
       this.clientes$ = res
     })
   }
 
-  async activateActionSheet(id) {
+  async activateActionSheet(id, i) {
     this.currentClientID = id;
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [{
@@ -53,6 +60,7 @@ export class ClientesPage implements OnInit {
         handler: () => {
           this.router.navigate(['/orders'])
           this.ordersService.clientID = this.currentClientID
+          this.ordersService.indexID = i;
         }
       }],
       cssClass: 'custom-action',
@@ -88,8 +96,6 @@ export class ClientesPage implements OnInit {
 
     await alert.present();
   }
-
-
 
 }
 

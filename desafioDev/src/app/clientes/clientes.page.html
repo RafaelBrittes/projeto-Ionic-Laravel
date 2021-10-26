@@ -3,21 +3,21 @@
   
 <ion-button [routerLink]="['/new-client']" expand="block" style="height: 50px; margin:50px 30px;">Novo Cliente</ion-button>
 
-<ion-item style="margin-left: 15px;" *ngFor="let cliente of clientes$">
+<ion-item style="margin-left: 15px;" *ngFor="let cliente of clientes$ ; let i = index">
   <ion-label >
     <ion-text>
-      <h5 style="float:left;">Nome:</h5> <h5>{{cliente.name}}</h5> 
+      <h5 >Nome: {{cliente.name}}</h5> 
     </ion-text>
-    <ion-text>
-      <ion-row>
-        <h5>CNPJ: </h5> <h5>{{cliente.cnpj}}</h5>
+    <ion-text >
+      <ion-row class="ion-align-items-center">
+        <h5>CNPJ: {{cliente.cnpj}}</h5>
       <ion-col style="padding: 0px">
-        <ion-icon style="margin-left: 90%;" (click)="activateActionSheet(cliente.id)" name="ellipsis-vertical-outline"></ion-icon>
+        <ion-icon  style="margin-left: 90%;" (click)="activateActionSheet(cliente.id, i)" name="ellipsis-vertical-outline"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-text>
     <ion-text>
-      <h5 style="float:left;">Total faturado: </h5> <h5> {{cliente.totalFaturado}}</h5>
+      <h5>Total faturado: {{cliente.total_value | currency:'BRL'}}</h5>
     </ion-text>
   </ion-label>
   

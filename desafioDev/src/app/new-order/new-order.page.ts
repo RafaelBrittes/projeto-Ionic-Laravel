@@ -31,21 +31,27 @@ export class NewOrderPage implements OnInit {
 
    onSubmit(){
     let newOrder = this.ordersForm.value;
+    console.log(typeof newOrder.value)
+    newOrder.value = newOrder.value.replace(/[,]/g, '')
+    newOrder.value = parseFloat(newOrder.value);
+    console.log(typeof newOrder.value)
     newOrder.user_id = this.clientID;
-    newOrder.value = parseFloat(newOrder.value).toFixed(2);
+
+    // newOrder.value = parseFloat(newOrder.value).toFixed(2);
    
     this.http.post(`${this.mainUrl}/order`, newOrder).subscribe((res) => {
       this.ordersService.setNewOrder(res)
+      this.ordersService.clientID = newOrder.user_id;
     })
     this.backToOrders();
   }
 
   backToOrders() {
     this._location.back();
+    console.log("back1")
   }
 
   ngOnInit() {
-    console.log(this.clientID);
   }
 
 }

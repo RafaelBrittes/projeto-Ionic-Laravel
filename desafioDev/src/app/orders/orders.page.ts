@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Orders } from './orders.models';
 import { OrdersService } from '../services/orders.service';
-import { ClientesService } from '../services/clientes.service';
-
 
 @Component({
   selector: 'app-orders',
