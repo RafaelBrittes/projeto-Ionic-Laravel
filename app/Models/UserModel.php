@@ -16,7 +16,8 @@ class UserModel extends Model
         'address',
         'city',
         'state',
-        'phone'
+        'phone',
+        'total_value'
     ];
 
     public $timestamps = false;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderModel;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,19 +12,19 @@ class OrderController extends Controller
 
     public function createOrder(Request $request){
         $order = new OrderModel();
+        $user = UserModel::where('id', $request->user_id);
         $order->item = $request->item;
         $order->value = $request->value;
         $order->user_id = $request->user_id;
+        $user->increment('total_value', $request->value);
         $order->save();
+
         return $request;
     }
 
     public function showOrders(){
         $orders = OrderModel::all();
-        return Response([
-            'Status'     => 'Sucesso',
-            'Informacao' => $orders
-        ]);
+        return $orders;
     }
 
     public function showOrdersByID($id){
