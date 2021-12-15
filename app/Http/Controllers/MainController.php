@@ -22,6 +22,7 @@ class MainController extends Controller
         $user->city = $request->city;
         $user->state = $request->state;
         $user->phone = $request->phone;
+        $user->total_value = 0;
         $user->save();
         return $user;
     }

@@ -21,6 +21,7 @@ class CreateUser extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('phone');
+            $table->float('total_value')->default(0);
             $table->timestamps();
         });
     }
